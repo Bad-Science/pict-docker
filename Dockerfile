@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 RUN apt-get install -y wget make gcc ocaml xorg libx11-dev
 
-WORKDIR "/tmp"
+WORKDIR "/root"
 
 RUN wget http://www.cis.upenn.edu/~bcpierce/papers/pict/pict-4.1/pict-4.1.tar.gz
 
@@ -27,7 +27,5 @@ RUN sed -i "s%$OLD_X11%$NEW_X11%g" SiteSpecific
 
 RUN make install; make install
 
-WORKDIR "$(HOME)"
-
-RUN rm -r /tmp/pict-4.1
+WORKDIR "/root" 
 
